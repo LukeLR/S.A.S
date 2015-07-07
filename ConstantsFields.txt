@@ -1,0 +1,72 @@
+Fields in Constants.java:
+
+00 logFileName: String
+01 xWindowSize: int
+02 yWindowSize: int
+03 xTileNumber: int
+04 yTileNumber: int
+05 interval: long
+06 xTileSize: double
+07 yTileSize: double
+08 difficulty: int
+09 grid: boolean
+10 borderkill: boolean
+11 inGame: boolean
+12 speedMultiplier: double
+13 numbers: boolean
+14 xFieldSize: int
+15 yFieldSize: int
+16 key_up: int
+17 key_down: int
+18 key_left: int
+19 key_right: int
+20 startTime: long
+21 endTime: long
+22 hasInput: boolean
+23 engergySaver: boolean
+24 inverseMode: boolean
+25 firstRun: boolean
+
+26 stats_playTime: long M
+27 stats_gamesPlayed: int M
+28 stats_timesLaunched: int M
+29 stats_overallApples: int M
+30 stats_overallSuperApples: int M
+31 stats_superApplesLost: int
+32 stats_maxApples: int M
+33 stats_maxSuperApples: int M
+34 stats_avgApples: AverageDouble M
+35 stats_avgSuperApples: AverageDouble M
+36 stats_avgSuperAppleScore: AverageDouble M
+37 stats_maxSuperAppleScore: int M
+38 stats_blocksWalked: int M
+39 stats_wallhit: int M
+40 stats_dieByWall: int M
+41 stats_dieByEatSelf: int M
+42 stats_dieByBadApple: int M
+43 stats_maxSnakeLength: int M
+44 stats_avgSnakeLength: AverageDouble M
+45 stats_avgPickupTime: AverageDouble M
+
+46 key_console: int
+47 key_pause: int
+
+53 stats_overallScore: int M
+54 stats_gamesReserveMode: int M
+55 stats_gamesEnemyMode: int M
+56 stats_gamesLabyMode: int M
+57 stats_gamesBorderOn: int M
+58 stats_gamesGridOn: int M
+59 stats_gamesDifficulty0: int
+60 stats_gamesDifficulty1: int
+61 stats_gamesDifficulty2: int
+62 stats_gamesDifficulty3: int
+63 stats_gamesDifficulty4: int
+64 stats_gamesDifficulty5: int
+65 stats_gamesDifficulty6: int
+66 stats_gamesDifficulty7: int
+67 stats_gamesDifficulty8: int
+68 stats_gamesDifficulty9: int
+69 stats_gamesDifficulty10: int
+
+70 stats_avgPlayTime: AverageDouble

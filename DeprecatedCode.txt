@@ -1,0 +1,520 @@
+Deprecated Code Snippets:
+SnakePanel:
+/* public SnakePanel (Schlangenkorper head, boolean[][] apples, int xTiles, int yTiles, int width, int height){
+	super();
+	
+	this.xTiles = xTiles;
+	this.yTiles = yTiles;
+	this.head = head;
+	this.apples = apples;
+	this.width = width;
+	this.height = height;
+	
+	con = new Constants();
+	con.set(Constants.XTILENUMBER, xTiles);
+	con.set(Constants.YTILENUMBER, yTiles);
+	con.set(Constants.XWINDOWSIZE, width);
+	con.set(Constants.YWINDOWSIZE, height);
+	
+	recalcSizes();
+	
+	Logger.logMessage('I', this, "Received Data: " + xTiles + " xTiles, " + yTiles + " yTiles, width: " + width + " height: " + height);
+} */
+	
+/* public SnakePanel (Schlangenkorper head, boolean[][] apples, int xTiles, int yTiles){
+	super();
+	
+	this.xTiles = xTiles;
+	this.yTiles = yTiles;
+	this.head = head;
+	this.apples = apples;
+	/* this.width = width;
+	this.height = height; */ /*
+} */
+
+SnakeGame:
+/* public SnakeGame (int width, int height, int xTiles, int yTiles, long interval){
+	con = new Constants();
+	con.set(Constants.XWINDOWSIZE, width);
+	con.set(Constants.YWINDOWSIZE, height);
+	con.set(Constants.XTILENUMBER, xTiles);
+	con.set(Constants.YTILENUMBER, yTiles);
+	con.set(Constants.INTERVAL, interval);
+	startup (con);
+	this(con);
+	
+	/* this.width = width;
+	this.height = height;
+	this.xTiles = xTiles;
+	this.yTiles = yTiles;
+	
+	Logger.logMessage('I', this, "Received dimensions: " + width + ", " + height + ", " + xTiles + ", " + yTiles);
+	
+	middle = new int[2];
+	middle[0] = (int)width/2;
+	middle[1] = (int)height/2;
+	
+	Logger.logMessage('I', this, "Calc'd middle: " + middle[0] + ", " + middle[1]);
+	
+	head = new Schlangenkorper((int)(middle[0]/xTiles), (int)(middle[1]/yTiles));
+	head.append(new Schlangenkorper((int)(middle[0]/xTiles) - 1, (int)(middle[1]/yTiles)));
+	laenge = head.length(0);
+	
+	setApple();
+	
+	ka = new KeyboardAdapter();
+	view = new SnakeView(ka, head, apples, xTiles, yTiles, width, height);
+	
+	recalcSizes();
+	view.repaint();
+	
+	Logger.logMessage('I', this, "Starting Runtime");
+	
+	while (inGame){
+		laufe();
+		try {
+			Thread.sleep(interval);
+		} catch (InterruptedException e) {
+			 TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} 
+} */
+/* private void recalcSizes(){
+	if (width != view.getWidth()){
+		width = view.getWidth();
+		con.set(Constants.XWINDOWSIZE, width);
+		if (xTileSize != (int)(width/xTiles)){
+			width = (int)(width/xTiles);
+			con.set(Constants.XTILESIZE, width);
+		}
+	}
+	
+	if (height != view.getHeight()){
+		height = view.getHeight();
+		con.set(Constants.YWINDOWSIZE, height);
+		if (yTileSize != (int)(height/yTiles)){
+			height = (int)(height/yTiles);
+			con.set(Constants.XTILESIZE, height);
+		}
+	}
+	
+	width = view.getWidth();
+	height = view.getHeight();
+	xTileSize = (int)(width/xTiles);
+	yTileSize = (int)(height/yTiles);
+} */
+
+SnakeView:
+/*public SnakeView (KeyboardAdapter ka, Schlangenkorper head, boolean[][] apples)  {
+	super("SnakeGame");
+	Logger.logMessage('I', this, "New Snakeview!");
+	
+	p = new SnakePanel (head, apples, 20, 20, 500, 500);
+	setContentPane(p);
+	this.addKeyListener(ka);
+	
+	this.addWindowListener(new SnakeViewListener(this));
+	
+	setSize(500, 500);
+	setVisible(true);
+}
+
+public SnakeView (KeyboardAdapter ka, Schlangenkorper head, boolean[][] apples, int xTiles, int yTiles, int width, int height)  {
+	super("SnakeGame");
+	Logger.logMessage('I', this, "New custom Snakeview!");
+	
+	p = new SnakePanel (head, apples, xTiles, yTiles, width, height);
+	setContentPane(p);
+	this.addKeyListener(ka);
+	
+	this.addWindowListener(new SnakeViewListener(this));
+	
+	setSize(width, height);
+	setVisible(true);
+} */
+
+LaunchMenu.launch()
+/* Logger.logMessage('I', this, "Size: " + xSizeField.getText() + ", " + ySizeField.getText() + " Tileno.: " + xTilesField.getText() + ", " + yTilesField.getText() + " Difficulty: " + this.difficulty.getValue());
+xSize = Integer.valueOf(xSizeField.getText());
+ySize = Integer.valueOf(ySizeField.getText());
+xTiles = Integer.valueOf(xTilesField.getText());
+yTiles = Integer.valueOf(yTilesField.getText());
+difficulty = this.difficulty.getValue();
+Logger.logMessage('I', this, "Values: " + xSize + " " + ySize + " " + xTiles + " " + yTiles + " " + difficulty);
+
+con.set(Constants.XWINDOWSIZE, xSize);
+con.set(Constants.XWINDOWSIZE, ySize);
+con.set(Constants.XWINDOWSIZE, xTiles); */
+
+Highscores:
+private int goOneUp(int index, int score){
+	index = index - 1;
+	Logger.logMessage('I', this, "Going one up. Index is now " + String.valueOf(index) + ".");
+	if (!(scores[index] > score) && index > 0){
+		return goOneUp(index, score);
+	} else {
+		return index;
+	}
+}
+
+public boolean addHighscore(int score, String name){
+	int index = 30;
+	index = goOneUp(index, score);
+	if (!(scores[index] > score)){
+		for (int i = 29; i >= index + 1; i--){
+			scores[i] = scores[i - 1];
+			names[i] = names[i - 1];
+			dates[i] = dates[i - 1];
+		}
+		
+		scores[index] = score;
+		names[index] = name;
+		dates[index] = new Date();
+		
+		return true;
+	} else {
+		for (int i = 29; i >= index + 2; i--){
+			scores[i] = scores[i - 1];
+			names[i] = names[i - 1];
+			dates[i] = dates[i - 1];
+		}
+		
+		scores[index + 1] = score;
+		names[index + 1] = name;
+		dates[index + 1] = new Date();
+		
+		return true;
+	}
+}
+
+public boolean isHighscore (int score){
+	int index = 30;
+	index = goOneUp(index, score);
+	if (!(scores[index] > score)){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+HighscoresFrame:
+public HighscoreFrame(SnakeGame sg){
+	super("Highscores");
+	this.game = sg;
+	p = new JPanel(new BorderLayout());
+	textPanel = new JPanel(new GridBagLayout());
+	c = new GridBagConstraints();
+	setContentPane(p);
+	
+	con = game.getConstants();
+	highscores = game.getHighscores();
+		
+//	liste = new JTextArea (highscores.toString());
+//	scroller = new JScrollPane(liste);
+//	scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//	scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+	namen = new JTextPane();
+	daten = new JTextPane();
+	scores = new JTextPane();
+	
+	namenDocument = namen.getStyledDocument();
+	datenDocument = daten.getStyledDocument();
+	scoreDocument = scores.getStyledDocument();
+	
+	try {
+		heading = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(new File("res/digital7mono.ttf"))).deriveFont(Font.PLAIN, 40);
+		body = Font.createFont(Font.TRUETYPE_FONT, new FileInputStream(new File("res/digital7mono.ttf"))).deriveFont(Font.PLAIN, 20);
+	} catch (FontFormatException | IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	headingAttr = new SimpleAttributeSet();
+//	headingAttr.addAttribute(StyleConstants.CharacterConstants.Bold, false);
+//	headingAttr.addAttribute(StyleConstants.CharacterConstants.Italic, false);
+//	headingAttr.addAttribute(StyleConstants.CharacterConstants.Foreground, Color.green);
+	
+	bodyAttr = new SimpleAttributeSet();
+//	bodyAttr.addAttribute(StyleConstants.CharacterConstants.Bold, false);
+//	bodyAttr.addAttribute(StyleConstants.CharacterConstants.Italic, false);
+//	bodyAttr.addAttribute(StyleConstants.LineSpacing, 100);
+//	bodyAttr.addAttribute(StyleConstants.CharacterConstants.Foreground, Color.green);
+	
+//	namen.setFont(body);
+//	daten.setFont(body);
+//	scores.setFont(body);
+	
+	namenListe = new StringBuilder();
+	datenListe = new StringBuilder();
+	scoreListe = new StringBuilder();
+	
+	for (int i = 0; i <= 29; i++){
+		namenListe.append(highscores.getHighscoreName(i));
+		namenListe.append(System.lineSeparator());
+		
+		datenListe.append(highscores.getHighscoreDate(i).toReadableString(Date.GermanFormat));
+		datenListe.append(System.lineSeparator());
+		
+		scoreListe.append(String.valueOf(highscores.getHighscore(i)));
+		scoreListe.append(System.lineSeparator());
+	}
+	
+	try {
+		namenDocument.insertString(0, namenListe.toString(), bodyAttr);
+		datenDocument.insertString(0, datenListe.toString(), bodyAttr);
+		scoreDocument.insertString(0, scoreListe.toString(), bodyAttr);
+	} catch (BadLocationException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+	namenLabel = new JLabel("Name:");
+	datenLabel = new JLabel("Datum:");
+	scoreLabel = new JLabel("Score:");
+	
+	namenLabel.setFont(heading);
+	datenLabel.setFont(heading);
+	scoreLabel.setFont(heading);
+	
+	namenLabel.setPreferredSize(new Dimension(0, 40));
+	datenLabel.setPreferredSize(new Dimension(0, 40));
+	scoreLabel.setPreferredSize(new Dimension(0, 40));
+	
+	scroller = new JScrollPane(textPanel);
+	scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+	scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	
+	c.gridx = 0;
+	c.gridy = 0;
+	c.gridwidth = 1;
+	c.gridheight = 1;
+	c.weightx = 1;
+	c.weighty = 0;
+	c.fill = GridBagConstraints.BOTH;
+	
+	textPanel.add(namenLabel, c);
+	
+	c.gridx = 1;
+	
+	textPanel.add(datenLabel, c);
+	
+	c.gridx = 2;
+	
+	textPanel.add(scoreLabel, c);
+	
+	c.gridx = 0;
+	c.gridy = 1;
+	c.gridwidth = 1;
+	c.gridheight = 1;
+	c.weightx = 1;
+	c.weighty = 1;
+	c.fill = GridBagConstraints.BOTH;
+	
+	textPanel.add(namen, c);
+	
+	c.gridx = 1;
+	
+	textPanel.add(daten, c);
+	
+	c.gridx = 2;
+	
+	textPanel.add(scores, c);
+	
+	p.add(scroller, BorderLayout.CENTER);
+	
+	setSize(500,500);
+	setVisible(true);
+}
+
+old Apple Class:
+package framework;
+
+import java.io.Serializable;
+import java.util.Calendar;
+
+import logging.Logger;
+
+public class Apple implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8993628150585189841L;
+	public int x, y, index;
+	public Constants con = new Constants();
+	public long placeTime, pickupTime;
+	
+	public Apple (Constants con){
+		Logger.logMessage('I', this, "Spawning new Apple in Range " + con.getString(Constants.XTILENUMBER) + ", " + con.getString(Constants.YTILENUMBER));
+		x = ((int)(Math.random()*con.getInt(Constants.XTILENUMBER)));
+		y = ((int)(Math.random()*con.getInt(Constants.YTILENUMBER)));
+		this.con = con;
+	}
+	
+	public Apple (Constants con, int x, int y){
+		Logger.logMessage('I', this, "Spawning new Apple at " + String.valueOf(x) + ", " + String.valueOf(y));
+		this.x = x;
+		this.y = y;
+		this.con = con;
+	}
+	
+	public Apple (int x, int y){
+		Logger.logMessage('I', this, "Spawning new Apple at " + String.valueOf(x) + ", " + String.valueOf(y));
+		this.x = x;
+		this.y = y;
+		this.con = new Constants();
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public Constants getConstants(){
+		return con;
+	}
+	
+	public void setIndex (int index){
+		this.index = index;
+	}
+	
+	public int getIndex (){
+		return index;
+	}
+	
+	public void setPlaceTime (long placeTime){
+		this.placeTime = placeTime;
+	}
+	
+	public void setPlaceTime(){
+		this.placeTime = Calendar.getInstance().getTimeInMillis();
+	}
+	
+	public long getPlaceTime(){
+		return placeTime;
+	}
+	
+	public void setPickupTime(long pickupTime){
+		this.pickupTime = pickupTime;
+	}
+	
+	public void setPickupTime(){
+		pickupTime = Calendar.getInstance().getTimeInMillis();
+	}
+	
+	public long getPickupTime(){
+		return pickupTime;
+	}
+}
+
+old SuperApple Class:
+package framework;
+
+import java.io.Serializable;
+import java.util.Calendar;
+
+public class SuperApple extends Apple implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2537380182196400042L;
+	private long placeTime, pickupTime, stayTime, remainingTime;
+	private int baseScore, timeDefizit, lengthBonus, overallBonus;
+	
+	public SuperApple (Constants con){
+		super(con);
+	}
+	
+	public SuperApple (Constants con, int x, int y){
+		super (con, x, y);
+	}
+	
+	public SuperApple (int x, int y){
+		super (x, y);
+	}
+	
+	public void setBaseScore(int baseScore){
+		this.baseScore = baseScore;
+	}
+	
+	public void calcBaseScore(){
+		baseScore = index*3;
+	}
+	
+	public void setStayTime(long time){
+		stayTime = time;
+	}
+	
+	public void calcRemainingTime(){
+		remainingTime = stayTime - (pickupTime-placeTime);
+	}
+	
+	public void setRemainingTime(long time){
+		remainingTime = time;
+	}
+	
+	public void setTimeDefizit(int timeDefizit){
+		this.timeDefizit = timeDefizit;
+	}
+	
+	public void calcTimeDefizit(){
+		if (stayTime != 0){
+			timeDefizit = (int)((remainingTime/stayTime)*50);
+		}
+	}
+	
+	public void setLengthBonus (int lengthBonus){
+		this.lengthBonus = lengthBonus;
+	}
+	
+	public void setOverallBonus (int overallBonus){
+		this.overallBonus = overallBonus;
+	}
+	
+	public void calcOverallBonus(){
+		overallBonus = baseScore+(50-timeDefizit)+lengthBonus;
+	}
+	
+	public long getStayTime(){
+		return stayTime;
+	}
+	
+	public long getRemainingTime(){
+		if (remainingTime == 0){
+			calcRemainingTime();
+		}
+		return remainingTime;
+	}
+	
+	public int getBaseScore(){
+		if (baseScore == 0){
+			calcBaseScore();
+		}
+		return baseScore;
+	}
+	
+	public int getTimeDefizit(){
+		if (timeDefizit == 0){
+			calcTimeDefizit();
+		}
+		return timeDefizit;
+	}
+	
+	public int getLengthBonus(){
+		return lengthBonus;
+	}
+	
+	public int getOverallBonus(){
+		if (overallBonus == 0){
+			calcOverallBonus();
+		}
+		return overallBonus;
+	}
+	
+	public int getIndex(){
+		return index;
+	}
+}

@@ -1,0 +1,51 @@
+TODO:
+- Hintergrundfarbe
+- Levelgenerierung alle ca. 20 Punkte
+- Soundtrack
+- .PNGs als Schlange / Äpfel
+- Mehrsprachigkeit
+- Multiplayermodus (turn by turn)
+- Icon
+- Statistics
+- Leere Einträge in der Highscoreliste ausblenden
+- Tooltips im Launchmenü etc.
+- Anzeigen auf dem Spielfeld, blenden sich aus wenn Schlange sich nähert
+- Updatefunktion
+- Highscores / Constants migrieren
+- Highscoreliste sortierbar
+- Hervorheben der letzten Highscore
+- Cheatmodus
+- Cheatmodus verschwindet nach Eingabe eines Cheatcodes
+- Erneutes drücken der Cheattaste öffnet neue Konsole mit bereits vorhandenem Input aus der letzten Session
+- Cheattaste frei wählbar
+- Texturen (Benutzerdefiniert)
+- Spielmodus Labyrinth
+- Spielmodus Feinde
+- Runtime-Startzeit im Log
+
+Bugs:
+- Scorecounter nicht sichtbar nach Highscore
+- Info-TextAreas bearbeitbar
+- SuperApples werden nicht korrekt berechnet (Zeitdefizit, Längenbonus?)
+
+DONE:
+- Anpassbare Steuerung
+- Andere Tasten als Steuerungstasten sperren
+- Ausbalancierung der Punktewertung (Äpfel * (Schwierigkeit + 1))/2?
+- Schriftart der Highscore-Liste
+- Inverse-Mode
+- Score-Berechnung nach Schwierigkeitsgrad
+- Speichern der Constants in den Highscores (e.g. Verwendeter Spielmodus o.ä.)
+- Spielzeit
+- Duration in Highscore nicht richtig gespeichert / angezeigt
+- Timer zählt im Energiesparmodus nach "GAME OVER" noch zur nächsten Sekunde
+- Überaus hohe Punktzahlen für Superäpfel
+- SuperAppleManager verwendet andere Apfeltasche als AppleManager
+- keine SuperApples vor Start
+- "Superäpfel"
+- In HighscoreInfos Infos über gesammelte Äpfel anzeigen lassen
+- Neue Highscore-Splash
+- Mehrere Fenster beim Bearbeiten der Tastenkombinationen möglich
+- Bestätigung beim Zurücksetzen der Tastenkombinationen
+- "Neues Spiel" nach Game Over
+- Was passiert, wenn keine neue Highscore geschafft wurde?
