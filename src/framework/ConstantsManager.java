@@ -29,9 +29,11 @@ import logging.Logger;
 
 public class ConstantsManager {
 	private String filename = "constants.dat";
+	private static Constants con = new Constants();
+	private static String defaultFilename = "constants.dat";
 
 	public ConstantsManager (){
-
+		
 	}
 
 	public ConstantsManager (String filename){
@@ -58,10 +60,14 @@ public class ConstantsManager {
 			return new Constants();
 		}
 	}
+	
+	public static void loadConstantsIntoClass(String filename){
+		ConstantsManager.con = ConstantsManager.loadConstants(filename);
+	}
 
 	public Constants loadConstants(){
 		if (filename.equals("")){
-			filename = "constants.dat";
+			filename = ConstantsManager.defaultFilename;
 		}
 		Logger.logMessage('I', new ConstantsManager(), "Loading Constants from default filename " + filename);
 		return loadConstants(filename); //Invoking loadConstants() with saved filename
@@ -79,8 +85,15 @@ public class ConstantsManager {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void saveConsantsFromClass(){
+		ConstantsManager.saveConstants(ConstantsManager.con, ConstantsManager.defaultFilename);
+	}
 
 	public void saveConstants (Constants c){
+		if (filename.equals("")){
+			filename = ConstantsManager.defaultFilename;
+		}
 		Logger.logMessage('I', new ConstantsManager(), "Saving Constants to default filename " + filename);
 		saveConstants (c, filename); //Invoking saveConstants with saved filename
 	}
@@ -112,7 +125,7 @@ public class ConstantsManager {
 
 	public void deleteConstants (){
 		if (filename.equals("")){
-			filename = "constants.dat";
+			filename = ConstantsManager.defaultFilename;
 		}
 		Logger.logMessage('I', new ConstantsManager(), "Deleting Constants with default filename " + filename);
 		deleteConstants(filename); //Invoking deleteConstants() with saved filename
