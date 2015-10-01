@@ -119,6 +119,15 @@ public class SuperAppleManager extends Thread {
 		return placeInterval;
 	}
 	
+	//TODO: Increase "Missed Super Apples"-Counter when save is false.
+	
+	/**
+	 * Remove the current SuperApple from the board.
+	 * 
+	 * @param save If it is removed because being picked up (then it will be
+	 * counted), otherwise it will just be removed, and the Counter for
+	 * "missed SuperApples" is increased.
+	 */
 	public void remove(boolean save){
 		if (save){
 			a.remove();
