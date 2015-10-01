@@ -42,7 +42,21 @@ import framework.HighscoresManager;
 import framework.SnakeGame;
 
 @SuppressWarnings("serial")
+
+/**
+ * This is the main GUI of Super Awesome Snake. Beneath being
+ * the GUI, it will care for everything being set up to get
+ * ready to start the game.
+ * 
+ * @author Lukas
+ *
+ */
 public class LaunchFrame extends JFrame {
+	/**
+	 * Constants, which contain all the settings for the game. 
+	 * They are read from file on launch, and passed to every class
+	 * if they are needed.
+	 */
 	private Constants con;
 	
 	private JPanel p, fileManagement;
@@ -53,13 +67,35 @@ public class LaunchFrame extends JFrame {
 	private JLabel xSizeLabel, ySizeLabel, xTilesLabel, yTilesLabel, difficultyLabel, speedLabel;
 	private JCheckBox grid, numbers, borderkill, energySaver, inverseMode;
 	
-	private boolean verbose = false;
+	/**
+	 * Static variable, which defines if this class should do verbose logging on
+	 * everything it does.
+	 */
+	private static boolean verbose = false;
+	
+	/**
+	 * Variable which is set to true when the Controls are being edited.
+	 */
 	private boolean editingControls = false;
 	
+	/**
+	 * The Button Listener which listens for button klicks in the main window.
+	 */
 	private LaunchMenuButtonListener lml;
 	
+	/**
+	 * {@link java.awt.GridBagConstraints}, Variables for using
+	 * the GridBagLayout.
+	 */
 	private GridBagConstraints c;
 	
+	/**
+	 * Constructor, which creates a new GUI and sets everything up
+	 * for the game to be played.
+	 * @param con The Constants to use for this instance. They are
+	 * passed by the {@link main.Launch#main(String[]) main method}
+	 * by default, which reads them from a file.
+	 */
 	public LaunchFrame(Constants con){
 		super("SuperSnake by Lukas Rose");
 		Logger.logMessage('I', this, "Initiated new LaunchMenu");

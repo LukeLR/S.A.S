@@ -22,8 +22,26 @@ import framework.ConstantsManager;
 import gui.LaunchFrame;
 import logging.Logger;
 
+/**
+ * 
+ * @author Lukas Rose
+ *
+ * This is the main class of Super Awesome Snake (S.A.S.). It contains
+ * the {@link #main(String[]) main method}, which will be called on
+ * launch and cares for everything.
+ */
 public class Launch {
-
+	/**
+	 * This is the main method of Super Awesome Snake. It has to be
+	 * called when the application is launched to start the game.
+	 * It will care for setting everything up and starting the game.
+	 * This happens by simply calling a new {@link gui.LaunchFrame}
+	 * and reading the "Constants" (Settings, Game State, ...) from
+	 * the default file location (constants.dat in the run directory).
+	 * 
+	 * @param args Parameters passed by the command line when launching
+	 * the application. They are ignored.
+	 */
 	public static void main(String[] args) {
 		Logger.logMessage("I", "Startup.");
 		new LaunchFrame(ConstantsManager.loadConstants("constants.dat"));
