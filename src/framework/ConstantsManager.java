@@ -29,8 +29,8 @@ import logging.Logger;
 
 public class ConstantsManager {
 	private String filename = "constants.dat";
-	private static Constants con = new Constants();
-	private static String defaultFilename = "constants.dat";
+	public static Constants con = new Constants();
+	public static String defaultFilename = "constants.dat";
 
 	public ConstantsManager (){
 		

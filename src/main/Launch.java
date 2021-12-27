@@ -44,7 +44,8 @@ public class Launch {
 	 */
 	public static void main(String[] args) {
 		Logger.logMessage("I", "Startup.");
-		new LaunchFrame(ConstantsManager.loadConstants("constants.dat"));
+		ConstantsManager.loadConstantsIntoClass("constants.dat");
+		new LaunchFrame();
 	}
 
 }

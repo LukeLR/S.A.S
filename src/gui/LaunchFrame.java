@@ -38,6 +38,7 @@ import listener.LaunchMenuWindowListener;
 import logging.LogManager;
 import logging.Logger;
 import framework.Constants;
+import framework.ConstantsManager;
 import framework.HighscoresManager;
 import framework.SnakeGame;
 
@@ -96,11 +97,11 @@ public class LaunchFrame extends JFrame {
 	 * passed by the {@link main.Launch#main(String[]) main method}
 	 * by default, which reads them from a file.
 	 */
-	public LaunchFrame(Constants con){
+	public LaunchFrame(){
 		super("SuperSnake by Lukas Rose");
 		Logger.logMessage('I', this, "Initiated new LaunchMenu");
 		
-		this.con = con;
+		this.con = ConstantsManager.con;
 		addWindowListener(new LaunchMenuWindowListener(this, con));
 		//main = new JPanel (new GridLayout(1,1));
 		p = new JPanel(new GridBagLayout());
